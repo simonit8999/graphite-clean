@@ -1,0 +1,17 @@
+{
+  "business_name": "GRAPHITE Detailing",
+  "logo_text": "GRAPHITE",
+  "accent_color": "#FF5A00",
+  "telegram_username": "graphite_detailing",
+  "phone": "+7 (999) 123-45-67",
+  "address": "г. Москва, ул. Пушкина, д. 10",
+  "hero_image": "",
+  "hero_title": "Идеальный блеск вашего авто",
+  "hero_subtitle": "Онлайн-запись за 30 секунд. Без звонков и ожиданий.",
+  "services": [
+    { "id": "1", "name": "Премиум-мойка", "price": 2500, "duration": "1.5 часа", "image": "" },
+    { "id": "2", "name": "Полировка кузова", "price": 8000, "duration": "4 часа", "image": "" },
+    { "id": "3", "name": "Керамическое покрытие", "price": 15000, "duration": "1 день", "image": "" }
+  ],
+  "working_hours": { "start": "09:00", "end": "20:00", "slot_minutes": 90 }
+}

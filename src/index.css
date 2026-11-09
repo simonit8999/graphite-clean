@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: 255 90 0;
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+  background: #050505;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  overscroll-behavior-y: none;
+}
+
+/* Safe area */
+.safe-top    { padding-top: env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Hide horizontal scrollbar for the calendar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Selection */
+::selection { background: rgb(var(--accent)); color: #fff; }
+
+/* Input autofill */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0 1000px #121212 inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Custom glow focus */
+.glow-focus:focus {
+  border-color: rgb(var(--accent));
+  box-shadow: 0 0 0 3px rgba(var(--accent), 0.15), 0 0 24px rgba(var(--accent), 0.25);
+  outline: none;
+}
+
+/*
+ * PRESERVED: keep every <img> pinned to its own GPU layer. Combined with
+ * the hidden preloader in App.tsx, this stops Chrome from evicting the
+ * decoded texture during AnimatePresence crossfades (which caused the
+ * hero image to disappear / flash black).
+ */
+img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-user-drag: none;
+}
+
+/*
+ * FIX for the black-flash between Hero and wizard:
+ *
+ * `#root` always paints the ink background and creates its own stacking
+ * context. During a crossfade, if the outgoing child fades out faster
+ * than the incoming one fades in (never happens with equal durations,
+ * but as a defensive measure), the underlying background is ink — NOT
+ * white or transparent. No flash.
+ */
+#root {
+  background-color: #050505;
+  isolation: isolate;
+}
